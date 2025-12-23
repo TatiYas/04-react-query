@@ -22,7 +22,6 @@ function SearchBar({ onSubmit }: SearchBarProps) {
        
     };
    
- 
 
     return (
     <header className={styles.header}>

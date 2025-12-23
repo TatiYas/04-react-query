@@ -42,21 +42,20 @@ function App() {
 
   return (
     <>
-      <SearchBar onSubmit={handleSubmit} />
-      {data && data.total_pages > 1 && (
+      
         <SearchBar onSubmit={handleSubmit} />
-      {data && data.total_pages > 1 && (
-        <ReactPaginate
-        pageCount={totalPages}
-        pageRangeDisplayed={5}
-        marginPagesDisplayed={1}
-        onPageChange={({ selected }) => setPage(selected + 1)}
-        forcePage={page - 1}
-        containerClassName={css.pagination}
-        activeClassName={css.active}
-        nextLabel="→"
-        previousLabel="←"
-        />
+        {data && data.total_pages > 1 && (
+          <ReactPaginate
+            pageCount={data?.total_pages || 0}
+            pageRangeDisplayed={5}
+            marginPagesDisplayed={1}
+            onPageChange={({ selected }) => setCurrentPage(selected + 1)}
+            forcePage={(data?.page || 1) - 1}
+            containerClassName={css.pagination}
+            activeClassName={css.active}
+            nextLabel="→"
+            previousLabel="←"
+          />
       )}
 
       {isLoading && <Loader />}
